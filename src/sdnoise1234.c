@@ -439,7 +439,7 @@ float sdnoise3( float x, float y, float z,
 
     /*  Add contributions from each corner to get the final noise value.
      * The result is scaled to return values in the range [-1,1] */
-    noise = 28.0f * (n0 + n1 + n2 + n3);
+    noise = 72.0f * (n0 + n1 + n2 + n3);
 
     /* Compute derivative, if requested by supplying non-null pointers
      * for the last three arguments */
@@ -481,9 +481,9 @@ float sdnoise3( float x, float y, float z,
         *dnoise_dx += t40 * gx0 + t41 * gx1 + t42 * gx2 + t43 * gx3;
         *dnoise_dy += t40 * gy0 + t41 * gy1 + t42 * gy2 + t43 * gy3;
         *dnoise_dz += t40 * gz0 + t41 * gz1 + t42 * gz2 + t43 * gz3;
-        *dnoise_dx *= 28.0f; /* Scale derivative to match the noise scaling */
-        *dnoise_dy *= 28.0f;
-        *dnoise_dz *= 28.0f;
+        *dnoise_dx *= 72.0f; /* Scale derivative to match the noise scaling */
+        *dnoise_dy *= 72.0f;
+        *dnoise_dz *= 72.0f;
       }
     return noise;
 }
@@ -643,7 +643,7 @@ float sdnoise4( float x, float y, float z, float w,
     }
 
     // Sum up and scale the result to cover the range [-1,1]
-    noise = 27.0f * (n0 + n1 + n2 + n3 + n4); // TODO: The scale factor is preliminary!
+    noise = 62.0f * (n0 + n1 + n2 + n3 + n4); // TODO: The scale factor is preliminary!
 
     /* Compute derivative, if requested by supplying non-null pointers
      * for the last four arguments */
@@ -705,10 +705,10 @@ float sdnoise4( float x, float y, float z, float w,
         *dnoise_dz += t40 * gz0 + t41 * gz1 + t42 * gz2 + t43 * gz3 + t44 * gz4;
         *dnoise_dw += t40 * gw0 + t41 * gw1 + t42 * gw2 + t43 * gw3 + t44 * gw4;
 
-        *dnoise_dx *= 28.0f; /* Scale derivative to match the noise scaling */
-        *dnoise_dy *= 28.0f;
-        *dnoise_dz *= 28.0f;
-        *dnoise_dw *= 28.0f;
+        *dnoise_dx *= 62.0f; /* Scale derivative to match the noise scaling */
+        *dnoise_dy *= 62.0f;
+        *dnoise_dz *= 62.0f;
+        *dnoise_dw *= 62.0f;
       }
 
     return noise;
