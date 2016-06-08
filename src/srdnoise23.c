@@ -46,7 +46,7 @@
 
 #include "srdnoise23.h" /* We strictly don't need this, but play nice. */
 
-#define FASTFLOOR(x) ( ((int)(x)<(x))) ? ((int)x) : (((int)x)-1) )
+#define FASTFLOOR(x) ( ((int)(x)<=(x))) ? ((int)x) : (((int)x)-1) )
 
 /* Static data ---------------------- */
 
@@ -398,7 +398,7 @@ float srdnoise3( float x, float y, float z, float angle,
 
     /*  Add contributions from each corner to get the final noise value.
      * The result is scaled to return values in the range [-1,1] */
-    noise = 28.0f * (n0 + n1 + n2 + n3);
+    noise = 72.0f * (n0 + n1 + n2 + n3);
 
     /* Compute derivative, if requested by supplying non-null pointers
      * for the last three arguments */
@@ -441,9 +441,9 @@ float srdnoise3( float x, float y, float z, float angle,
         *dnoise_dx += t40 * gx0 + t41 * gx1 + t42 * gx2 + t43 * gx3;
         *dnoise_dy += t40 * gy0 + t41 * gy1 + t42 * gy2 + t43 * gy3;
         *dnoise_dz += t40 * gz0 + t41 * gz1 + t42 * gz2 + t43 * gz3;
-        *dnoise_dx *= 28.0f; /* Scale derivative to match the noise scaling */
-        *dnoise_dy *= 28.0f;
-        *dnoise_dz *= 28.0f;
+        *dnoise_dx *= 72.0f; /* Scale derivative to match the noise scaling */
+        *dnoise_dy *= 72.0f;
+        *dnoise_dz *= 72.0f;
       }
     return noise;
   }
