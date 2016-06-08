@@ -1,7 +1,7 @@
 /* sdnoise1234, Simplex noise with true analytic
  * derivative in 1D to 4D.
  *
- * Copyright © 2003-2012, Stefan Gustavson
+ * Copyright Â© 2003-2012, Stefan Gustavson
  *
  * Contact: stefan.gustavson@gmail.com
  *
@@ -15,12 +15,6 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
  */
-
-/** \file
-    \brief C header file for Perlin simplex noise with analytic
-    derivative over 1, 2, 3 and 4 dimensions.
-    \author Stefan Gustavson (stefan.gustavson@gmail.com)
-*/
 
 /*
  * This is an implementation of Perlin "simplex noise" over one
