@@ -13,16 +13,10 @@
  * but you may do as you like.
  */
 
-/** \file
-		\brief Header for "simplexnoise1234.c" for producing Perlin simplex noise.
-		\author Stefan Gustavson (stegu@itn.liu.se)
-*/
-
 /*
  * This is a clean, fast, modern and free Perlin Simplex noise function.
  * It is a stand-alone compilation unit with no external dependencies,
  * highly reusable without source code modifications.
- *
  *
  * Note:
  * Replacing the "float" type with "double" can actually make this run faster
