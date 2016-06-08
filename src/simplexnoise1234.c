@@ -2,7 +2,7 @@
  * derivative in 1D to 4D.
  *
  * Author: Stefan Gustavson, 2003-2005
- * Contact: stegu@itn.liu.se
+ * Contact: stefan.gustavson@liu.se
  *
  * This code was GPL licensed until February 2011.
  * As the original author of this code, I hereby
@@ -12,11 +12,6 @@
  * appreciate being told where this code finds any use,
  * but you may do as you like.
  */
-
-/** \file
-		\brief C implementation of Perlin Simplex Noise over 1,2,3, and 4 dimensions.
-		\author Stefan Gustavson (stegu@itn.liu.se)
-*/
 
 /*
  * This implementation is "Simplex Noise" as presented by
@@ -32,11 +27,10 @@
  * header file. The header file is made for use by external code only.
  */
 
-
 // We don't need to include this. It does no harm, but no use either.
 #include	"simplexnoise1234.h"
 
-#define FASTFLOOR(x) ( ((x)>0) ? ((int)x) : (((int)x)-1) )
+#define FASTFLOOR(x) ( ((int)(x)<(x)) ? ((int)x) : (((int)x)-1) )
 
 //---------------------------------------------------------------------
 // Static data
@@ -301,28 +295,28 @@ float snoise3(float x, float y, float z) {
     int kk = k & 0xff;
 
     // Calculate the contribution from the four corners
-    float t0 = 0.6f - x0*x0 - y0*y0 - z0*z0;
+    float t0 = 0.5f - x0*x0 - y0*y0 - z0*z0;
     if(t0 < 0.0f) n0 = 0.0f;
     else {
       t0 *= t0;
       n0 = t0 * t0 * grad3(perm[ii+perm[jj+perm[kk]]], x0, y0, z0);
     }
 
-    float t1 = 0.6f - x1*x1 - y1*y1 - z1*z1;
+    float t1 = 0.5f - x1*x1 - y1*y1 - z1*z1;
     if(t1 < 0.0f) n1 = 0.0f;
     else {
       t1 *= t1;
       n1 = t1 * t1 * grad3(perm[ii+i1+perm[jj+j1+perm[kk+k1]]], x1, y1, z1);
     }
 
-    float t2 = 0.6f - x2*x2 - y2*y2 - z2*z2;
+    float t2 = 0.5f - x2*x2 - y2*y2 - z2*z2;
     if(t2 < 0.0f) n2 = 0.0f;
     else {
       t2 *= t2;
       n2 = t2 * t2 * grad3(perm[ii+i2+perm[jj+j2+perm[kk+k2]]], x2, y2, z2);
     }
 
-    float t3 = 0.6f - x3*x3 - y3*y3 - z3*z3;
+    float t3 = 0.5f - x3*x3 - y3*y3 - z3*z3;
     if(t3<0.0f) n3 = 0.0f;
     else {
       t3 *= t3;
@@ -370,7 +364,7 @@ float snoise4(float x, float y, float z, float w) {
     // To find out which of the 24 possible simplices we're in, we need to
     // determine the magnitude ordering of x0, y0, z0 and w0.
     // The method below is a good way of finding the ordering of x,y,z,w and
-    // then find the correct traversal order for the simplex we’re in.
+    // then find the correct traversal order for the simplex weÂ’re in.
     // First, six pair-wise comparisons are performed between each possible pair
     // of the four coordinates, and the results are used to add up binary bits
     // for an integer index.
@@ -431,35 +425,35 @@ float snoise4(float x, float y, float z, float w) {
     int ll = l & 0xff;
 
     // Calculate the contribution from the five corners
-    float t0 = 0.6f - x0*x0 - y0*y0 - z0*z0 - w0*w0;
+    float t0 = 0.5f - x0*x0 - y0*y0 - z0*z0 - w0*w0;
     if(t0 < 0.0f) n0 = 0.0f;
     else {
       t0 *= t0;
       n0 = t0 * t0 * grad4(perm[ii+perm[jj+perm[kk+perm[ll]]]], x0, y0, z0, w0);
     }
 
-   float t1 = 0.6f - x1*x1 - y1*y1 - z1*z1 - w1*w1;
+   float t1 = 0.5f - x1*x1 - y1*y1 - z1*z1 - w1*w1;
     if(t1 < 0.0f) n1 = 0.0f;
     else {
       t1 *= t1;
       n1 = t1 * t1 * grad4(perm[ii+i1+perm[jj+j1+perm[kk+k1+perm[ll+l1]]]], x1, y1, z1, w1);
     }
 
-   float t2 = 0.6f - x2*x2 - y2*y2 - z2*z2 - w2*w2;
+   float t2 = 0.5f - x2*x2 - y2*y2 - z2*z2 - w2*w2;
     if(t2 < 0.0f) n2 = 0.0f;
     else {
       t2 *= t2;
       n2 = t2 * t2 * grad4(perm[ii+i2+perm[jj+j2+perm[kk+k2+perm[ll+l2]]]], x2, y2, z2, w2);
     }
 
-   float t3 = 0.6f - x3*x3 - y3*y3 - z3*z3 - w3*w3;
+   float t3 = 0.5f - x3*x3 - y3*y3 - z3*z3 - w3*w3;
     if(t3 < 0.0f) n3 = 0.0f;
     else {
       t3 *= t3;
       n3 = t3 * t3 * grad4(perm[ii+i3+perm[jj+j3+perm[kk+k3+perm[ll+l3]]]], x3, y3, z3, w3);
     }
 
-   float t4 = 0.6f - x4*x4 - y4*y4 - z4*z4 - w4*w4;
+   float t4 = 0.5f - x4*x4 - y4*y4 - z4*z4 - w4*w4;
     if(t4 < 0.0f) n4 = 0.0f;
     else {
       t4 *= t4;
