@@ -17,12 +17,6 @@
  * but you may do as you like.
  */
 
-/** \file
-    \brief C header file for Perlin simplex noise with rotating
-    gradients and analytic derivative over 2 and 3 dimensions.
-    \author Stefan Gustavson (stegu@itn.liu.se)
-*/
-
 /*
  * This is an implementation of Perlin "simplex noise" over two dimensions
  * (x,y) and three dimensions (x,y,z). One extra parameter 't' rotates the
