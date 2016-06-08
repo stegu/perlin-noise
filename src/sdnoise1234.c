@@ -1,7 +1,7 @@
 /* sdnoise1234, Simplex noise with true analytic
  * derivative in 1D to 4D.
  *
- * Copyright © 2003-2012, Stefan Gustavson
+ * Copyright Â© 2003-2012, Stefan Gustavson
  *
  * Contact: stefan.gustavson@gmail.com
  *
@@ -24,16 +24,15 @@
  * flow animations, curl noise, analytic antialiasing and such.
  *
  * Visually, this noise is exactly the same as the plain version of
- * simplex noise provided in the file "snoise1234.c". It just returns
+ * simplex noise provided in the file "simplexnoise1234.c". It just returns
  * all partial derivatives in addition to the scalar noise value.
  *
  * 2012-01-12: Slight update to compile with MSVC (declarations moved).
  */
 
-#include <stdio.h>
 #include "sdnoise1234.h" /* We strictly don't need this, but play nice. */
 
-#define FASTFLOOR(x) ( ((x)>0) ? ((int)x) : (((int)x)-1) )
+#define FASTFLOOR(x) ( ((int)(x)<(x)) ? ((int)x) : (((int)x)-1) )
 
 /* Static data ---------------------- */
 
@@ -537,7 +536,7 @@ float sdnoise4( float x, float y, float z, float w,
     // To find out which of the 24 possible simplices we're in, we need to
     // determine the magnitude ordering of x0, y0, z0 and w0.
     // The method below is a reasonable way of finding the ordering of x,y,z,w
-    // and then find the correct traversal order for the simplex we’re in.
+    // and then find the correct traversal order for the simplex weÂ’re in.
     // First, six pair-wise comparisons are performed between each possible pair
     // of the four coordinates, and then the results are used to add up binary
     // bits for an integer index into a precomputed lookup table, simplex[].
