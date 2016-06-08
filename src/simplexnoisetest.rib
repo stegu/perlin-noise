@@ -1,0 +1,16 @@
+Display "simplexnoisetest.tif" "file" "rgb"
+Format 256 256 1
+Projection "perspective" "fov" 30
+ShadingRate 1
+
+Translate 0 0 3.8
+
+WorldBegin
+
+    Surface "simplexnoisetest"
+
+    AttributeBegin
+        Polygon "P" [-1 -1 0 -1 1 0 1 1 0 1 -1 0]
+    AttributeEnd
+
+WorldEnd
