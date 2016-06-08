@@ -36,6 +36,9 @@
  * The gradient rotations that can be performed by this noise function
  * and the true analytic derivatives are required to do flow noise.
  * You can't do it properly with regular Perlin noise.
+ * The 3D version is my own creation. It's a hack, because unlike the 2D
+ * version the gradients rotate around different axes, and therefore
+ * they don't remain uncorrelated through the rotation, but it looks OK.
  *
  */
 
