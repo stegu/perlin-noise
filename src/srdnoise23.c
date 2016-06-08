@@ -17,12 +17,6 @@
  * but you may do as you like.
  */
 
-/** \file
-    \brief C implementation of Perlin simplex noise with rotating
-    gradients and analytic derivative over 2 and 3 dimensions.
-    \author Stefan Gustavson (stefan.gustavson@gmail.com)
-*/
-
 /*
  * This is an implementation of Perlin "simplex noise" over two dimensions
  * (x,y) and three dimensions (x,y,z). One extra parameter 't' rotates the
@@ -42,6 +36,9 @@
  * The gradient rotations that can be performed by this noise function
  * and the true analytic derivatives are required to do flow noise.
  * You can't do it properly with regular Perlin noise.
+ * The 3D version is my own creation. It's a hack, because unlike the 2D
+ * version the gradients rotate around different axes, and therefore
+ * they don't remain uncorrelated through the rotation, but it looks OK.
  *
  */
 
@@ -49,7 +46,7 @@
 
 #include "srdnoise23.h" /* We strictly don't need this, but play nice. */
 
-#define FASTFLOOR(x) ( ((x)>0) ? ((int)x) : (((int)x)-1) )
+#define FASTFLOOR(x) ( ((int)(x)<(x))) ? ((int)x) : (((int)x)-1) )
 
 /* Static data ---------------------- */
 
@@ -359,7 +356,7 @@ float srdnoise3( float x, float y, float z, float angle,
     int kk = k % 256;
 
     /* Calculate the contribution from the four corners */
-    float t0 = 0.6f - x0*x0 - y0*y0 - z0*z0;
+    float t0 = 0.5f - x0*x0 - y0*y0 - z0*z0;
     float t20, t40;
     if(t0 < 0.0f) n0 = t0 = t20 = t40 = gx0 = gy0 = gz0 = 0.0f;
     else {
@@ -369,7 +366,7 @@ float srdnoise3( float x, float y, float z, float angle,
       n0 = t40 * graddotp3( gx0, gy0, gz0, x0, y0, z0 );
     }
 
-    float t1 = 0.6f - x1*x1 - y1*y1 - z1*z1;
+    float t1 = 0.5f - x1*x1 - y1*y1 - z1*z1;
     float t21, t41;
     if(t1 < 0.0f) n1 = t1 = t21 = t41 = gx1 = gy1 = gz1 = 0.0f;
     else {
@@ -379,7 +376,7 @@ float srdnoise3( float x, float y, float z, float angle,
       n1 = t41 * graddotp3( gx1, gy1, gz1, x1, y1, z1 );
     }
 
-    float t2 = 0.6f - x2*x2 - y2*y2 - z2*z2;
+    float t2 = 0.5f - x2*x2 - y2*y2 - z2*z2;
     float t22, t42;
     if(t2 < 0.0f) n2 = t2 = t22 = t42 = gx2 = gy2 = gz2 = 0.0f;
     else {
@@ -389,7 +386,7 @@ float srdnoise3( float x, float y, float z, float angle,
       n2 = t42 * graddotp3( gx2, gy2, gz2, x2, y2, z2 );
     }
 
-    float t3 = 0.6f - x3*x3 - y3*y3 - z3*z3;
+    float t3 = 0.5f - x3*x3 - y3*y3 - z3*z3;
     float t23, t43;
     if(t3 < 0.0f) n3 = t3 = t23 = t43 = gx3 = gy3 = gz3 = 0.0f;
     else {
