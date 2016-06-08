@@ -401,7 +401,7 @@ float sdnoise3( float x, float y, float z,
     kk = k % 256;
 
     /* Calculate the contribution from the four corners */
-    t0 = 0.6f - x0*x0 - y0*y0 - z0*z0;
+    t0 = 0.5f - x0*x0 - y0*y0 - z0*z0;
     if(t0 < 0.0f) n0 = t0 = t20 = t40 = gx0 = gy0 = gz0 = 0.0f;
     else {
       grad3( perm[ii + perm[jj + perm[kk]]], &gx0, &gy0, &gz0 );
@@ -410,7 +410,7 @@ float sdnoise3( float x, float y, float z,
       n0 = t40 * ( gx0 * x0 + gy0 * y0 + gz0 * z0 );
     }
 
-    t1 = 0.6f - x1*x1 - y1*y1 - z1*z1;
+    t1 = 0.5f - x1*x1 - y1*y1 - z1*z1;
     if(t1 < 0.0f) n1 = t1 = t21 = t41 = gx1 = gy1 = gz1 = 0.0f;
     else {
       grad3( perm[ii + i1 + perm[jj + j1 + perm[kk + k1]]], &gx1, &gy1, &gz1 );
@@ -419,7 +419,7 @@ float sdnoise3( float x, float y, float z,
       n1 = t41 * ( gx1 * x1 + gy1 * y1 + gz1 * z1 );
     }
 
-    t2 = 0.6f - x2*x2 - y2*y2 - z2*z2;
+    t2 = 0.5f - x2*x2 - y2*y2 - z2*z2;
     if(t2 < 0.0f) n2 = t2 = t22 = t42 = gx2 = gy2 = gz2 = 0.0f;
     else {
       grad3( perm[ii + i2 + perm[jj + j2 + perm[kk + k2]]], &gx2, &gy2, &gz2 );
@@ -428,7 +428,7 @@ float sdnoise3( float x, float y, float z,
       n2 = t42 * ( gx2 * x2 + gy2 * y2 + gz2 * z2 );
     }
 
-    t3 = 0.6f - x3*x3 - y3*y3 - z3*z3;
+    t3 = 0.5f - x3*x3 - y3*y3 - z3*z3;
     if(t3 < 0.0f) n3 = t3 = t23 = t43 = gx3 = gy3 = gz3 = 0.0f;
     else {
       grad3( perm[ii + 1 + perm[jj + 1 + perm[kk + 1]]], &gx3, &gy3, &gz3 );
@@ -597,7 +597,7 @@ float sdnoise4( float x, float y, float z, float w,
     ll = l & 0xff;
 
     // Calculate the contribution from the five corners
-    t0 = 0.6f - x0*x0 - y0*y0 - z0*z0 - w0*w0;
+    t0 = 0.5f - x0*x0 - y0*y0 - z0*z0 - w0*w0;
     if(t0 < 0.0f) n0 = t0 = t20 = t40 = gx0 = gy0 = gz0 = gw0 = 0.0f;
     else {
       t20 = t0 * t0;
@@ -606,7 +606,7 @@ float sdnoise4( float x, float y, float z, float w,
       n0 = t40 * ( gx0 * x0 + gy0 * y0 + gz0 * z0 + gw0 * w0 );
     }
 
-   t1 = 0.6f - x1*x1 - y1*y1 - z1*z1 - w1*w1;
+   t1 = 0.5f - x1*x1 - y1*y1 - z1*z1 - w1*w1;
     if(t1 < 0.0f) n1 = t1 = t21 = t41 = gx1 = gy1 = gz1 = gw1 = 0.0f;
     else {
       t21 = t1 * t1;
@@ -615,7 +615,7 @@ float sdnoise4( float x, float y, float z, float w,
       n1 = t41 * ( gx1 * x1 + gy1 * y1 + gz1 * z1 + gw1 * w1 );
     }
 
-   t2 = 0.6f - x2*x2 - y2*y2 - z2*z2 - w2*w2;
+   t2 = 0.5f - x2*x2 - y2*y2 - z2*z2 - w2*w2;
     if(t2 < 0.0f) n2 = t2 = t22 = t42 = gx2 = gy2 = gz2 = gw2 = 0.0f;
     else {
       t22 = t2 * t2;
@@ -624,7 +624,7 @@ float sdnoise4( float x, float y, float z, float w,
       n2 = t42 * ( gx2 * x2 + gy2 * y2 + gz2 * z2 + gw2 * w2 );
    }
 
-   t3 = 0.6f - x3*x3 - y3*y3 - z3*z3 - w3*w3;
+   t3 = 0.5f - x3*x3 - y3*y3 - z3*z3 - w3*w3;
     if(t3 < 0.0f) n3 = t3 = t23 = t43 = gx3 = gy3 = gz3 = gw3 = 0.0f;
     else {
       t23 = t3 * t3;
@@ -633,7 +633,7 @@ float sdnoise4( float x, float y, float z, float w,
       n3 = t43 * ( gx3 * x3 + gy3 * y3 + gz3 * z3 + gw3 * w3 );
     }
 
-   t4 = 0.6f - x4*x4 - y4*y4 - z4*z4 - w4*w4;
+   t4 = 0.5f - x4*x4 - y4*y4 - z4*z4 - w4*w4;
     if(t4 < 0.0f) n4 = t4 = t24 = t44 = gx4 = gy4 = gz4 = gw4 = 0.0f;
     else {
       t24 = t4 * t4;
