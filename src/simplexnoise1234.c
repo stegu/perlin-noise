@@ -30,7 +30,7 @@
 // We don't need to include this. It does no harm, but no use either.
 #include	"simplexnoise1234.h"
 
-#define FASTFLOOR(x) ( ((int)(x)<(x)) ? ((int)x) : (((int)x)-1) )
+#define FASTFLOOR(x) ( ((int)(x)<=(x)) ? ((int)x) : (((int)x)-1) )
 
 //---------------------------------------------------------------------
 // Static data
@@ -325,7 +325,7 @@ float snoise3(float x, float y, float z) {
 
     // Add contributions from each corner to get the final noise value.
     // The result is scaled to stay just inside [-1,1]
-    return 32.0f * (n0 + n1 + n2 + n3); // TODO: The scale factor is preliminary!
+    return 72.0f * (n0 + n1 + n2 + n3);
   }
 
 
@@ -461,6 +461,6 @@ float snoise4(float x, float y, float z, float w) {
     }
 
     // Sum up and scale the result to cover the range [-1,1]
-    return 27.0f * (n0 + n1 + n2 + n3 + n4); // TODO: The scale factor is preliminary!
+    return 62.0f * (n0 + n1 + n2 + n3 + n4);
   }
 //---------------------------------------------------------------------
