@@ -257,8 +257,8 @@ float sdnoise2( float x, float y, float *dnoise_dx, float *dnoise_dy )
     y2 = y0 - 1.0f + 2.0f * G2;
 
     /* Wrap the integer indices at 256, to avoid indexing perm[] out of bounds */
-    ii = i % 256;
-    jj = j % 256;
+    ii = i & 0xff;
+    jj = j & 0xff;
 
     /* Calculate the contribution from the three corners */
     t0 = 0.5f - x0 * x0 - y0 * y0;
@@ -396,9 +396,9 @@ float sdnoise3( float x, float y, float z,
     z3 = z0 - 1.0f + 3.0f * G3;
 
     /* Wrap the integer indices at 256, to avoid indexing perm[] out of bounds */
-    ii = i % 256;
-    jj = j % 256;
-    kk = k % 256;
+    ii = i & 0xff;
+    jj = j & 0xff;
+    kk = k & 0xff;
 
     /* Calculate the contribution from the four corners */
     t0 = 0.5f - x0*x0 - y0*y0 - z0*z0;
