@@ -17,7 +17,7 @@
  * This implementation is "Simplex Noise" as presented by
  * Ken Perlin at a relatively obscure and not often cited course
  * session "Real-Time Shading" at Siggraph 2001 (before real
- * time shading actually took on), under the title "hardware noise".
+ * time shading actually took off), under the title "hardware noise".
  * The 3D function is numerically equivalent to his Java reference
  * code available in the PDF course notes, although I re-implemented
  * it from scratch to get more readable code. The 1D, 2D and 4D cases
@@ -27,7 +27,7 @@
  * header file. The header file is made for use by external code only.
  */
 
-// We don't need to include this. It does no harm, but no use either.
+// We don't really need to include this, but play nice and do it anyway.
 #include	"simplexnoise1234.h"
 
 #define FASTFLOOR(x) ( ((int)(x)<=(x)) ? ((int)x) : (((int)x)-1) )
