@@ -196,7 +196,7 @@ float sdnoise1( float x, float *dnoise_dx)
  *  *dnoise_dx += -8.0f * t21 * t1 * x1 * (gx1 * x1) + t41 * gx1;
  */
 
-  if( (NULL != dnoise_dx ))
+  if( dnoise_dx )
   {
     *dnoise_dx = t20 * t0 * gx0 * x20;
     *dnoise_dx += t21 * t1 * gx1 * x21;
@@ -294,7 +294,7 @@ float sdnoise2( float x, float y, float *dnoise_dx, float *dnoise_dy )
 
     /* Compute derivative, if requested by supplying non-null pointers
      * for the last two arguments */
-    if( ( NULL != dnoise_dx ) && ( NULL != dnoise_dy ) )
+    if( ( dnoise_dx ) && ( dnoise_dy ) )
       {
 	/*  A straight, unoptimised calculation would be like:
      *    *dnoise_dx = -8.0f * t20 * t0 * x0 * ( gx0 * x0 + gy0 * y0 ) + t40 * gx0;
@@ -443,7 +443,7 @@ float sdnoise3( float x, float y, float z,
 
     /* Compute derivative, if requested by supplying non-null pointers
      * for the last three arguments */
-    if( ( NULL != dnoise_dx ) && ( NULL != dnoise_dy ) && ( NULL != dnoise_dz ))
+    if( ( dnoise_dx ) && ( dnoise_dy ) && ( dnoise_dz ))
       {
 	/*  A straight, unoptimised calculation would be like:
      *     *dnoise_dx = -8.0f * t20 * t0 * x0 * dot(gx0, gy0, gz0, x0, y0, z0) + t40 * gx0;
@@ -647,7 +647,7 @@ float sdnoise4( float x, float y, float z, float w,
 
     /* Compute derivative, if requested by supplying non-null pointers
      * for the last four arguments */
-    if( ( NULL != dnoise_dx ) && ( NULL != dnoise_dy ) && ( NULL != dnoise_dz ) && ( NULL != dnoise_dw ) )
+    if( ( dnoise_dx ) && ( dnoise_dy ) && ( dnoise_dz ) && ( dnoise_dw ) )
       {
 	/*  A straight, unoptimised calculation would be like:
      *     *dnoise_dx = -8.0f * t20 * t0 * x0 * dot(gx0, gy0, gz0, gw0, x0, y0, z0, w0) + t40 * gx0;
