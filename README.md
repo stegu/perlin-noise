@@ -6,7 +6,7 @@ the Internet for a couple of decades. It was about time I collected
 them in a proper repository.
 
 The functions are in plain C, but the code is very straightforward,
-comsisting solely of plain computational sequences. Porting to C++
+consisting solely of plain computational sequences. Porting to C++
 is only a matter of encapsulating this in classes, and porting to
 any other language should be a reasonably easy as well.
 
