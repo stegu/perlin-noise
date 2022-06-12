@@ -5,7 +5,7 @@
 // LED array with an Arduino, this code could be quite useful.
 
 // The input coordinates are 16-bit unsigned integers in 7.8 bits
-// representation: 0 to 65535 represent 0.0 to 127.9961 in steps
+// representation: 0 to 32767 represent 0.0 to 127.9961 in steps
 // of 1/256, with the pattern making a seamless tiling wrap at 128.
 // The output value is a signed 8-bit integer in 1.7s representation:
 // -128 to 127 represents -1 to 0.9922 in steps of 1/128.
