@@ -14,7 +14,7 @@
 // The output value stays within the range -1 to 1 by a small margin.
 
 // Author: Stefan Gustavson (stefan.gustavson@gmail.com)
-// Version 2022-06-30
+// Version 2023-02-18
 // Released under the terms of the MIT license.
 
 signed char fakesin(unsigned char x);
