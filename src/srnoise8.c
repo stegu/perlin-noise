@@ -7,7 +7,7 @@
 // (stefan.gustavson@gmail.com)
 // Released under the terms of the MIT license:
 // https://opensource.org/licenses/MIT
-// Version: 2022-06-30
+// Version: 2023-02-18
 //
 // An implementation of 2-D "Simplex Noise" written for 8-bit
 // CPUs, in "hardware-tuned C" made to run fast on an ATmega32.
