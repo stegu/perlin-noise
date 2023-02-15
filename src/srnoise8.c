@@ -258,7 +258,7 @@ signed char srnoise8(unsigned short x, unsigned short y, unsigned char alpha) {
 
   // Sum up noise contributions from all vertices
   signed char n;
-  n = (145*(n0 + n1 + n2))>>7; // Scale to better cover the range [-128,127]
+  n = (136*(n0 + n1 + n2))>>7; // Scale to better cover the range [-128,127]
 
   // We're done. Return the result in 1.7s format.
   return n;
