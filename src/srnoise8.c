@@ -9,6 +9,11 @@
 // https://opensource.org/licenses/MIT
 // Version: 2023-02-18
 //
+// This function is very similar to "armnoise8", but it adds a
+// parameter "alpha" to animate the noise pattern. This happens
+// at a small cost in speed, so if you don't want the animation,
+// "armnoise8" is slightly faster.
+//
 // An implementation of 2-D "Simplex Noise" written for 8-bit
 // CPUs, in "hardware-tuned C" made to run fast on an ATmega32.
 // Intended use cases are low resolution LED array animations
