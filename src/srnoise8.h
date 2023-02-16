@@ -1,4 +1,4 @@
-// armnoise8.h
+// srnoise8.h
 
 // Simplex Flow Noise written for 8-bit ARM CPUs, in "hardware-tuned C"
 // Speed is a priority. Noise quality is of secondary concern.
